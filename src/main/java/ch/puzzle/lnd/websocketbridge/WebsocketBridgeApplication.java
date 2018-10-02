@@ -25,10 +25,11 @@ public class WebsocketBridgeApplication implements ApplicationRunner{
 	
 	private static String DEFAULT_URL = "wss://ln-self-order-pos-dev.ose3.puzzle.ch/websocket/invoice?access_token=";
 	private static String DEFAULT_TOPIC = "/topic/invoice";
+	private static String DEFAULT_COMMAND = "./dummy_command.sh";
 	
 	private static String OPTION_ARG_URL = "url";
 	private static String OPTION_ARG_TOPIC = "topic";
-	private static String OPTION_ARG_COMMAND = "./dummy_command.sh";
+	private static String OPTION_ARG_COMMAND = "command";
 
 	private static final Logger logger = LoggerFactory.getLogger(WebsocketBridgeApplication.class);
 	
@@ -54,7 +55,7 @@ public class WebsocketBridgeApplication implements ApplicationRunner{
         
         String url = DEFAULT_URL;
         String topic = DEFAULT_TOPIC;
-        String command = OPTION_ARG_COMMAND;
+        String command = DEFAULT_COMMAND;
         if(args.getOptionValues(OPTION_ARG_URL) != null && !args.getOptionValues(OPTION_ARG_URL).equals("")) {
         	url = args.getOptionValues(OPTION_ARG_URL).get(0);
         }
