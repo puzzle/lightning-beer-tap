@@ -1,4 +1,4 @@
-#WebSocket Bridge for our LND enabled Beer Tap
+# WebSocket Bridge for our LND enabled Beer Tap
 
 ## build application
 ```
@@ -6,7 +6,7 @@
 ```
 
 
-##how to run
+## how to run
 
 get the built application from ./build/libs
 
