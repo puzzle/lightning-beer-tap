@@ -113,6 +113,7 @@ if __name__ == "__main__":
     # choose product
     if args.test:
         print("Test mode enabled")
+        gpio_test()
     elif args.product == "large":
         print("Choice: Large beer")
         draw_beer("large", t_large_beer)
