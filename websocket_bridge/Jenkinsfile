@@ -10,8 +10,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh './gradlew build'
-                archiveArtifacts 'build/libs/*.?ar'
+                sh './websocket_bridge/gradlew build'
+                archiveArtifacts 'websocket_bridge/build/libs/*.?ar'
             }
         }
     }
