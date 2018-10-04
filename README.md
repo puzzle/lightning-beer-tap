@@ -28,3 +28,16 @@ for example:
 ```
 ./dummy_command.sh --memo="puzzleUp #9c4a Grey Card (CHF 5.00)" --products=PRODUCT_1
 ```
+
+# GPIO handler
+
+## Dependencies
+
+* RPi-GPIO (preinstalled on all raspberry pi distros)
+* argparse
+
+## how to run
+
+```
+python beerme.py --product=[large,small] [--test, --memo="asdf"]
+```
