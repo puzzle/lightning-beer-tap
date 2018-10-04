@@ -1,5 +1,5 @@
-.gradle
-/build/
+/websocket_bridge/.gradle
+/websocket_bridge/build/
 !gradle/wrapper/gradle-wrapper.jar
 
 ### STS ###
