@@ -11,7 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh './websocket_bridge/gradlew build'
-                archiveArtifacts 'websocket_bridge/build/libs/*.?ar'
+                archiveArtifacts 'build/libs/*.?ar'
             }
         }
     }
