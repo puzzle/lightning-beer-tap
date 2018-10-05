@@ -21,7 +21,9 @@ t_large_beer = 1
 t_small_beer = 0.5
 
 def cli_args_parser():
-    """ argument parser """
+    """ 
+        Argument parser configuration 
+    """
     parser = argparse.ArgumentParser(
             description='Lightning beer tap cli',
             formatter_class=argparse.ArgumentDefaultsHelpFormatter
@@ -53,7 +55,9 @@ def cli_args_parser():
     return parser.parse_args()
 
 def __setup_GPIO():
-    """ Setup all GPIOs """
+    """ 
+        Setup all GPIOs, set output mode, and set gpio mode to bcm
+    """
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(r_ch1,GPIO.OUT)
@@ -61,7 +65,10 @@ def __setup_GPIO():
     GPIO.setup(r_ch3,GPIO.OUT)
 
 def __set_gpio(channel=r_ch1, value=GPIO.LOW):
-    """ Try to safely change the value of a gpio """
+    """ 
+        Try to safely change the value of a gpio, catch exception if it fails
+        TODO: Exception Handling
+    """
     try:
         GPIO.output(channel, value)
     except:
@@ -69,7 +76,9 @@ def __set_gpio(channel=r_ch1, value=GPIO.LOW):
         GPIO.cleanup()
 
 def gpio_test():
-    """ Test all channels """
+    """ 
+        Test all channels
+    """
     # Test channel 1 
     __set_gpio(r_ch1, GPIO.LOW)
     print("Channel 1:The Common Contact is access to the Normal Open Contact!")
@@ -94,35 +103,33 @@ def gpio_test():
     print("Channel 3:The Common Contact is access to the Normal Closed Contact!\n")
     time.sleep(0.5)
 
-def draw_large_beer(wait=t_large_beer):
-    """ Draw a delicious large beer, keep the tap on for n_wait seconds """
+def draw_beer(wait=t_large_beer):
+    """ 
+        Draw a delicious beer, keep the tap on for n_wait seconds 
+    """
     __set_gpio(r_ch1, GPIO.HIGH)
     time.sleep(wait)
     __set_gpio(r_ch1, GPIO.LOW)
 
-def draw_small_beer(wait=t_small_beer):
-    """ Draw a delicious small beer, keep the tap on for n_wait seconds """ 
-    __set_gpio(r_ch1, GPIO.HIGH)
-    time.sleep(wait)
-    __set_gpio(r_ch1, GPIO.LOW)
-
-# if not loaded as module
 if __name__ == "__main__":
+    """
+        Main if not loaded as module
+    """
     # parse arguments
     args = cli_args_parser()
     
     # Setup all gpio pins
     __setup_GPIO()
 
-    # call functions
+    # call functions according to the given arguments
     if args.test:
         print("Test mode enabled")
         gpio_test()
     elif args.product == "large":
         print("Choice: Large beer")
-        draw_large_beer(t_large_beer)
+        draw_beer(t_large_beer)
     elif args.product == "small":
         print("Choice: Small beer")
-        draw_small_beer(t_small_beer)
+        draw_beer(t_small_beer)
     else:
         print("RTFM!")
