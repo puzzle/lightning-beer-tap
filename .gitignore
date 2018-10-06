@@ -1,6 +1,7 @@
 /websocket_bridge/.gradle
 /websocket_bridge/build/
 !gradle/wrapper/gradle-wrapper.jar
+nohup.out
 
 ### STS ###
 .apt_generated

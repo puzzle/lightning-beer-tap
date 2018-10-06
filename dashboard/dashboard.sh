@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Arguments
 SHOP="https://ln-self-order-pos-dev.ose3.puzzle.ch/#/self-service-landscape/puzzleUp"
