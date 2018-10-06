@@ -17,8 +17,12 @@ r_ch2 = 20
 r_ch3 = 21
 
 # time constants in seconds
-t_large_beer = 1
-t_small_beer = 0.5
+t_large_beer = 5
+t_small_beer = 2
+
+# Syntax suger because of negative logic
+S_ON = GPIO.LOW
+S_OFF = GPIO.HIGH
 
 def cli_args_parser():
     """ 
@@ -60,11 +64,13 @@ def __setup_GPIO():
     """
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)
-    GPIO.setup(r_ch1,GPIO.OUT)
-    GPIO.setup(r_ch2,GPIO.OUT)
-    GPIO.setup(r_ch3,GPIO.OUT)
 
-def __set_gpio(channel=r_ch1, value=GPIO.LOW):
+    for gpio in [r_ch1, r_ch2, r_ch3]:
+        print("setting up gpio_{}".format(gpio))
+        GPIO.setup(gpio, GPIO.OUT)
+        __set_gpio(gpio, S_OFF)
+
+def __set_gpio(channel=r_ch1, value=S_OFF):
     """ 
         Try to safely change the value of a gpio, catch exception if it fails
         TODO: Exception Handling
@@ -79,37 +85,21 @@ def gpio_test():
     """ 
         Test all channels
     """
-    # Test channel 1 
-    __set_gpio(r_ch1, GPIO.LOW)
-    print("Channel 1:The Common Contact is access to the Normal Open Contact!")
-    time.sleep(0.5)
-    __set_gpio(r_ch1, GPIO.HIGH)
-    print("Channel 1:The Common Contact is access to the Normal Closed Contact!\n")
-    time.sleep(0.5)
-
-    # Test channel 2
-    __set_gpio(r_ch2, GPIO.LOW)
-    print("Channel 2:The Common Contact is access to the Normal Open Contact!")
-    time.sleep(0.5)
-    __set_gpio(r_ch2, GPIO.HIGH)
-    print("Channel 2:The Common Contact is access to the Normal Closed Contact!\n")
-    time.sleep(0.5)
-
-    # Test channel 3
-    __set_gpio(r_ch3, GPIO.LOW)
-    print("Channel 3:The Common Contact is access to the Normal Open Contact!")
-    time.sleep(0.5)
-    __set_gpio(r_ch3, GPIO.HIGH)
-    print("Channel 3:The Common Contact is access to the Normal Closed Contact!\n")
-    time.sleep(0.5)
+    for i, gpio in enumerate([r_ch1, r_ch2, r_ch3], start=1):
+        __set_gpio(gpio, S_ON)
+        print("Channel_{}: gpio_{} on".format(i, gpio))
+        time.sleep(0.1)
+        __set_gpio(gpio, S_OFF)
+        print("Channel_{}: gpio_{} off".format(i, gpio))
+        time.sleep(0.1)
 
 def draw_beer(wait=t_large_beer):
     """ 
         Draw a delicious beer, keep the tap on for n_wait seconds 
     """
-    __set_gpio(r_ch1, GPIO.HIGH)
+    __set_gpio(r_ch1, S_ON)
     time.sleep(wait)
-    __set_gpio(r_ch1, GPIO.LOW)
+    __set_gpio(r_ch1, S_OFF)
 
 if __name__ == "__main__":
     """
