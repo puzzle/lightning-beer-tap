@@ -31,6 +31,8 @@ for example:
 
 # GPIO handler
 
+To execute this python module the user has to be part of the group `gpio`.
+
 ## Dependencies
 
 * RPi-GPIO (preinstalled on all raspberry pi distros)
