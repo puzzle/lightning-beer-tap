@@ -10,8 +10,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh './websocket_bridge/gradlew build'
-                archiveArtifacts 'build/libs/*.?ar'
+                dir('websocket_bridge') {
+                    sh 'rm -rf build'
+                    sh './gradlew build'
+                    archiveArtifacts 'build/libs/*.jar'
+                }
             }
         }
     }
