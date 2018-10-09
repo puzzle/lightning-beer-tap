@@ -35,9 +35,9 @@ def cli_args_parser():
 
     parser.add_argument(
             '-p',
-            '--product',
+            '--products',
             action='store',
-            dest='product',
+            dest='products',
             help="Product description, beer size [small, large]"
     )
 
@@ -107,6 +107,8 @@ if __name__ == "__main__":
     """
     # parse arguments
     args = cli_args_parser()
+
+    print(args.products)
     
     # Setup all gpio pins
     __setup_GPIO()
@@ -115,10 +117,10 @@ if __name__ == "__main__":
     if args.test:
         print("Test mode enabled")
         gpio_test()
-    elif args.product == "large":
+    elif args.products == "LARGE_BEER":
         print("Choice: Large beer")
         draw_beer(t_large_beer)
-    elif args.product == "small":
+    elif args.products == "SMALL_BEER":
         print("Choice: Small beer")
         draw_beer(t_small_beer)
     else:
