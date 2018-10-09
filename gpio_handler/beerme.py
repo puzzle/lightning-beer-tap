@@ -19,6 +19,7 @@ r_ch3 = 21
 # time constants in seconds
 t_large_beer = 5
 t_small_beer = 2
+t_flush = 20
 
 # Syntax suger because of negative logic
 S_ON = GPIO.LOW
@@ -46,6 +47,13 @@ def cli_args_parser():
             '--test',
             action='store_true',
             help="Test mode which tests all available channels"
+    )
+
+    parser.add_argument(
+            '-f',
+            '--flush',
+            action='store_true',
+            help="Flush tap for 20s!"
     )
 
     parser.add_argument(
@@ -117,6 +125,9 @@ if __name__ == "__main__":
     if args.test:
         print("Test mode enabled")
         gpio_test()
+    elif args.flush:
+        print("Choice: Flush tap")
+        draw_beer(t_flush)
     elif args.products == "LARGE_BEER":
         print("Choice: Large beer")
         draw_beer(t_large_beer)
