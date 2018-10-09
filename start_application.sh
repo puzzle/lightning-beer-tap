@@ -6,7 +6,7 @@ OPTS="-Xms128M -Xmx128M -jar"
 JARPATH="websocket_bridge/build/libs/"
 JARFILE="websocket-bridge-0.0.1-SNAPSHOT.jar"
 TOPIC="/topic/invoice"
-COMMAND="./../../../gpio_handler/beerme.py"
+COMMAND="./beerme.py"
 
 # Enable dashboard
 source dashboard/dashboard.sh

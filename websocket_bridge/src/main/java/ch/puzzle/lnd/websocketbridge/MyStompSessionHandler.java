@@ -57,6 +57,7 @@ public class MyStompSessionHandler extends StompSessionHandlerAdapter {
 	}
 
 	private void executeCommand(InvoiceDTO invoice) throws IOException, InterruptedException {
+		logger.info("Command : " + command);
 
 		ProcessBuilder pb = new ProcessBuilder(command, "--memo=\"" + invoice.getMemo() + "\"",
 				"--products=" + invoice.getOrderedProducts());
