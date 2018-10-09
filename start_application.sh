@@ -11,9 +11,13 @@ COMMAND="./gpio_handler/beerme.py"
 # Enable dashboard
 source dashboard/dashboard.sh
 
+# Copy jarfile
 if [ ! -f $JARFILE ]; then
 	cp "$JARPATH$JARFILE" .
 fi
+
+# Hide mouse
+DISPLAY=:0 unclutter -idle 0.01 -root &
 
 # Enable websocket bridge
 nohup java $OPTS $JARFILE --url=$WEBAPP --topic=$TOPIC --command=$COMMAND &
