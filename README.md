@@ -9,11 +9,6 @@ of the project are documented below.
 To build your own lightning powered beer tap you'll need the follwing parts. We
 got most of our parts from distibutors located in switzerland, but you can get them elsewhere as well.
 
-| Left Aligned | Centered | Right Aligned | Left Aligned | Centered | Right Aligned |
-| :----------- | :------: | ------------: | :----------- | :------: | ------------: |
-| Cell 1       | Cell 2   | Cell 3        | Cell 4       | Cell 5   | Cell 6        |
-| Cell 7       | Cell 8   | Cell 9        | Cell 10      | Cell 11  | Cell 12       |
-
 | **Partname**                    | **Partnumber** | **Price / CHF**   |  **Distributor**          |
 | :------------------------------ | --------------:| ----------------: | :------------------------ |
 | Raspberry Pi 3 B+               |  10760         |  39               |  pi-shop.ch               |
