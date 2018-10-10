@@ -1,13 +1,10 @@
 # Lightning powered beer tap
 
-This project consists of multiple parts. To make things easier the
-`application.sh` provides a frontend to control everything. The different parts
-of the project are documented below.
+This project consists of multiple parts. To make things easier the `application.sh` provides a frontend to control everything. The different parts of the project are documented below.
 
 ## Parts list
 
-To build your own lightning powered beer tap you'll need the follwing parts. We
-got most of our parts from distibutors located in switzerland, but you can get them elsewhere as well.
+To build your own lightning powered beer tap you'll need the follwing parts. We got most of our parts from distibutors located in switzerland, but you can get them anywhere you want.
 
 | **Partname**                    | **Partnumber** | **Price / CHF**   |  **Distributor**          |
 | :------------------------------ | --------------:| ----------------: | :------------------------ |
@@ -22,11 +19,9 @@ got most of our parts from distibutors located in switzerland, but you can get t
 
 ## Installation
 
-This is straightforward. If you bought an empty micro sd card, just download
-the latest [Raspbian image](https://www.raspberrypi.org/downloads/raspbian/).
+This is straightforward. If you bought an empty micro-sd card, just download the latest [Raspbian image](https://www.raspberrypi.org/downloads/raspbian/).
 * Fire up `dd` to load the image to your card.
-* Use `sudo raspi-config` to extend your partitions, start openssh and enable
-the gpios
+* Use `sudo raspi-config` to extend your partitions, start openssh and enable the gpios.
 * Follow the guide on [how to secure you raspberry pi](https://www.raspberrypi.org/documentation/configuration/security.md)
 * Once you've deployed your ssh key and secured your acces, clone this repo.
 * Install the necessary software to your pi by executing the following
@@ -53,7 +48,7 @@ $ ./application.sh build # rebuilds the java websocket bridge
 # WebSocket Bridge
 
 ## build application
-```
+```bash
 ./gradlew build
 ```
 
@@ -61,9 +56,10 @@ $ ./application.sh build # rebuilds the java websocket bridge
 
 get the built application from ./build/libs
 
-```
+```bash
 java -jar websocket-bridge-0.0.1-SNAPSHOT.jar --url=wss://ln-self-order-pos-dev.ose3.puzzle.ch/websocket/invoice?access_token= --topic=/topic/invoice --command=./dummy_command.sh
 ```
+
 Options:
 
 * url: the websocket to connect to
@@ -91,6 +87,7 @@ To execute this python module the user has to be part of the group `gpio`.
 
 ## how to run
 
-```
-python beerme.py --product=[large,small] [--test, --memo="asdf"]
+```bash
+$ python gpio_handler.py --product=[large,small] [--test, --memo="asdf"]
+$ python gpio_handler.py --help
 ```
