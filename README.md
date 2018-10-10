@@ -24,7 +24,6 @@ got most of our parts from distibutors located in switzerland, but you can get t
 | 24V AC Source (24W/50Hz)       |  169-84-752    |  22.7            |  distrelec.ch            |
 | Beer tap with solenoid valve   |  08.00125      |  247.3           |  schankanlagenhandel.eu  |
 | Bent faucet for beer tap       |  08.00128      |  22.51           |  schankanlagenhandel.eu  |
-|                                |                | **515.11**       |                          |
 
 ## Installation
 
