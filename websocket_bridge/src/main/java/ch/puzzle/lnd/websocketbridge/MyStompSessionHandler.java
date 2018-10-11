@@ -57,10 +57,14 @@ public class MyStompSessionHandler extends StompSessionHandlerAdapter {
 	}
 
 	private void executeCommand(InvoiceDTO invoice) throws IOException, InterruptedException {
-		logger.info("Command : " + command);
+		
+		String memoArg = "--memo=\"" + invoice.getMemo() + "\"";
+		String productsArg = "--products=" + invoice.getOrderedProducts();
+		
+		logger.info("Command: " + command + ", Args: " + memoArg + ", " + productsArg);
 
-		ProcessBuilder pb = new ProcessBuilder(command, "--memo=\"" + invoice.getMemo() + "\"",
-				"--products=" + invoice.getOrderedProducts());
+		ProcessBuilder pb = new ProcessBuilder(command, memoArg, productsArg);
+		
 		Map<String, String> env = pb.environment();
 		env.put("PUZZLE_POS", "beerPos");
 		pb.directory(new File("./"));
