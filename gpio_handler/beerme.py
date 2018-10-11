@@ -17,7 +17,7 @@ r_ch2 = 20
 r_ch3 = 21
 
 # time constants in seconds
-t_large_beer = 5
+t_large_beer = 6
 t_small_beer = 2
 t_flush = 20
 
