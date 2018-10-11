@@ -95,7 +95,7 @@ public class WebsocketBridge implements Runnable, DisposableBean {
 				session.get().isConnected();
 				connected = true;
 			}catch(HttpServerErrorException | ExecutionException e) {
-				logger.info("Connection Error", e);
+				logger.error("Connection Error", e);
 				// do try again
 			}
 		}
