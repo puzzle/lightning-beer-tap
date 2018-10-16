@@ -20,7 +20,7 @@ OPTIONS:
 	build	Build or rebuild the java web bridge to the lightning node
                                                                                            
 EXAMPLES:                                                                               
-    dockme puzzle
+    application restart
 
 EOF
 }
@@ -34,7 +34,7 @@ app_start(){
 	# Start up the dashboard
 	source dashboard/dashboard.sh
 	# Hide mouse when still
-	DISPLAY=:0 unclutter -idle 0.01 -root &
+	#DISPLAY=:0 unclutter -idle 0.01 -root &
 	# Start websocket bridge, fork to background and no output
 	nohup java $OPTS $JARPATH$JARFILE --url=$WEBAPP --topic=$TOPIC --command=$COMMAND & >/dev/null 2>&1
 }
@@ -68,6 +68,12 @@ case $1 in
 
 	build)
 	app_build
+	exit 0;
+	;;
+
+	restart)
+	app_stop
+    app_start
 	exit 0;
 	;;
 
