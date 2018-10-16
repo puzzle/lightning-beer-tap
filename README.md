@@ -24,8 +24,7 @@ This is straightforward. If you bought an empty micro-sd card, just download the
 * Use `sudo raspi-config` to extend your partitions, start openssh and enable the gpios.
 * Follow the guide on [how to secure you raspberry pi](https://www.raspberrypi.org/documentation/configuration/security.md)
 * Once you've deployed your ssh key and secured your acces, clone this repo.
-* Install the necessary software to your pi by executing the following
-commands:
+* Install the necessary software to your pi by executing the following commands:
 ```bash
 sudo apt-get update
 sudo apt-get install -y  openjdk-8-jre openjdk-8-jdk unclutter vim

@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-#######################
+###################
 # P26 ----> r_ch1 #
 # P20 ----> r_ch2 #
 # P21 ----> r_ch3 #
-#######################
+###################
 
 import RPi.GPIO as GPIO
 import argparse

@@ -1,0 +1,274 @@
+EESchema Schematic File Version 4
+LIBS:Beertap-cache
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "Lightning Beertap"
+Date "2018-10-11"
+Rev "v1.0"
+Comp "Puzzle ITC"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Relay:FINDER-40.51 K1
+U 1 1 5BBE20CA
+P 6600 3500
+F 0 "K1" V 6033 3500 50  0000 C CNN
+F 1 "Relais CH1" V 6124 3500 50  0000 C CNN
+F 2 "Relay_THT:Relay_SPDT_Finder_40.51" H 7740 3460 50  0001 C CNN
+F 3 "http://gfinder.findernet.com/assets/Series/353/S40EN.pdf" H 6600 3500 50  0001 C CNN
+	1    6600 3500
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:Electromagnetic_Actor L1
+U 1 1 5BBE25DE
+P 8150 4400
+F 0 "L1" H 8021 4404 50  0000 R CNN
+F 1 "Solenoid Valve" H 8021 4495 50  0000 R CNN
+F 2 "" V 8125 4500 50  0001 C CNN
+F 3 "~" V 8125 4500 50  0001 C CNN
+	1    8150 4400
+	1    0    0    1   
+$EndComp
+$Comp
+L Device:Transformer_1P_1S T1
+U 1 1 5BBE36D7
+P 5150 5000
+F 0 "T1" H 5150 4575 50  0000 C CNN
+F 1 "24V AC Transformator" H 5150 4666 50  0000 C CNN
+F 2 "" H 5150 5000 50  0001 C CNN
+F 3 "~" H 5150 5000 50  0001 C CNN
+	1    5150 5000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:NEUT #PWR?
+U 1 1 5BBE3E9A
+P 4300 4600
+F 0 "#PWR?" H 4300 4450 50  0001 C CNN
+F 1 "NEUT" H 4317 4773 50  0000 C CNN
+F 2 "" H 4300 4600 50  0001 C CNN
+F 3 "" H 4300 4600 50  0001 C CNN
+	1    4300 4600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:LINE #PWR?
+U 1 1 5BBE3E53
+P 4100 4600
+F 0 "#PWR?" H 4100 4450 50  0001 C CNN
+F 1 "LINE" H 4117 4773 50  0000 C CNN
+F 2 "" H 4100 4600 50  0001 C CNN
+F 3 "" H 4100 4600 50  0001 C CNN
+	1    4100 4600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Isolator:SFH617A-1 U1
+U 1 1 5BBE4FE3
+P 4750 3400
+F 0 "U1" H 4750 3725 50  0000 C CNN
+F 1 "Optocoupler" H 4750 3634 50  0000 C CNN
+F 2 "Package_DIP:DIP-4_W7.62mm" H 4550 3200 50  0001 L CIN
+F 3 "http://www.vishay.com/docs/83740/sfh617a.pdf" H 4750 3400 50  0001 L CNN
+	1    4750 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R1
+U 1 1 5BBE52D2
+P 4200 3150
+F 0 "R1" V 3993 3150 50  0000 C CNN
+F 1 "1k" V 4084 3150 50  0000 C CNN
+F 2 "" V 4130 3150 50  0001 C CNN
+F 3 "~" H 4200 3150 50  0001 C CNN
+	1    4200 3150
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R2
+U 1 1 5BBE5347
+P 3850 3400
+F 0 "R2" H 3780 3354 50  0000 R CNN
+F 1 "10k" H 3780 3445 50  0000 R CNN
+F 2 "" V 3780 3400 50  0001 C CNN
+F 3 "~" H 3850 3400 50  0001 C CNN
+	1    3850 3400
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:+3.3V #PWR?
+U 1 1 5BBE5426
+P 3850 2950
+F 0 "#PWR?" H 3850 2800 50  0001 C CNN
+F 1 "+3.3V" H 3865 3123 50  0000 C CNN
+F 2 "" H 3850 2950 50  0001 C CNN
+F 3 "" H 3850 2950 50  0001 C CNN
+	1    3850 2950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED D1
+U 1 1 5BBE5499
+P 4200 3650
+F 0 "D1" H 4191 3866 50  0000 C CNN
+F 1 "LED" H 4191 3775 50  0000 C CNN
+F 2 "" H 4200 3650 50  0001 C CNN
+F 3 "~" H 4200 3650 50  0001 C CNN
+	1    4200 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5BBE5A6B
+P 5050 2900
+F 0 "#PWR?" H 5050 2750 50  0001 C CNN
+F 1 "+5V" H 5065 3073 50  0000 C CNN
+F 2 "" H 5050 2900 50  0001 C CNN
+F 3 "" H 5050 2900 50  0001 C CNN
+	1    5050 2900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Transistor_BJT:2N2219 Q1
+U 1 1 5BBE5C23
+P 5750 3500
+F 0 "Q1" H 5941 3546 50  0000 L CNN
+F 1 "BJT" H 5941 3455 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-39-3" H 5950 3425 50  0001 L CIN
+F 3 "http://www.onsemi.com/pub_link/Collateral/2N2219-D.PDF" H 5750 3500 50  0001 L CNN
+	1    5750 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5BBE5D12
+P 5850 3950
+F 0 "#PWR?" H 5850 3700 50  0001 C CNN
+F 1 "GND" H 5855 3777 50  0000 C CNN
+F 2 "" H 5850 3950 50  0001 C CNN
+F 3 "" H 5850 3950 50  0001 C CNN
+	1    5850 3950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3850 2950 3850 3150
+Wire Wire Line
+	4050 3150 3850 3150
+Connection ~ 3850 3150
+Wire Wire Line
+	3850 3150 3850 3250
+Wire Wire Line
+	4350 3150 4450 3150
+Wire Wire Line
+	4450 3150 4450 3300
+Wire Wire Line
+	4450 3500 4450 3650
+Wire Wire Line
+	4450 3650 4350 3650
+Wire Wire Line
+	4050 3650 3850 3650
+Wire Wire Line
+	3850 3650 3850 3550
+Wire Wire Line
+	5050 3300 5050 2900
+$Comp
+L Device:D D2
+U 1 1 5BBE778F
+P 6600 2750
+F 0 "D2" H 6600 2966 50  0000 C CNN
+F 1 "1N4148" H 6600 2875 50  0000 C CNN
+F 2 "" H 6600 2750 50  0001 C CNN
+F 3 "~" H 6600 2750 50  0001 C CNN
+	1    6600 2750
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Device:R R3
+U 1 1 5BBE8637
+P 5300 3500
+F 0 "R3" V 5093 3500 50  0000 C CNN
+F 1 "R" V 5184 3500 50  0000 C CNN
+F 2 "" V 5230 3500 50  0001 C CNN
+F 3 "~" H 5300 3500 50  0001 C CNN
+	1    5300 3500
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5050 3500 5150 3500
+Wire Wire Line
+	5450 3500 5550 3500
+$Comp
+L power:+5V #PWR?
+U 1 1 5BBE9B4B
+P 6900 2650
+F 0 "#PWR?" H 6900 2500 50  0001 C CNN
+F 1 "+5V" H 6915 2823 50  0000 C CNN
+F 2 "" H 6900 2650 50  0001 C CNN
+F 3 "" H 6900 2650 50  0001 C CNN
+	1    6900 2650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5850 3700 5850 3950
+Wire Wire Line
+	6300 3300 6250 3300
+Wire Wire Line
+	6900 2650 6900 2750
+Wire Wire Line
+	6750 2750 6900 2750
+Connection ~ 6900 2750
+Wire Wire Line
+	6900 2750 6900 3300
+Wire Wire Line
+	6450 2750 6250 2750
+Wire Wire Line
+	6250 2750 6250 3300
+Connection ~ 6250 3300
+Wire Wire Line
+	6250 3300 5850 3300
+Text GLabel 3450 3650 0    50   Input ~ 0
+P26
+Wire Wire Line
+	3450 3650 3850 3650
+Connection ~ 3850 3650
+Text Notes 5400 4650 2    50   ~ 0
+230V / 50Hz
+Text Notes 4900 2250 0    50   ~ 0
+Relay board
+Wire Wire Line
+	4300 4600 4300 4800
+Wire Wire Line
+	4300 4800 4750 4800
+Wire Wire Line
+	4100 4600 4100 5200
+Wire Wire Line
+	4100 5200 4750 5200
+Wire Notes Line
+	3150 2350 3150 4200
+Wire Notes Line
+	3150 4200 7050 4200
+Wire Notes Line
+	7050 4200 7050 2350
+Wire Notes Line
+	7050 2350 3150 2350
+Wire Wire Line
+	5550 4800 6300 4800
+Wire Wire Line
+	8150 4600 8150 5200
+Wire Wire Line
+	5550 5200 8150 5200
+Wire Wire Line
+	6300 3700 6300 4800
+Wire Wire Line
+	6900 3800 8150 3800
+Wire Wire Line
+	8150 3800 8150 4300
+NoConn ~ 6900 3600
+$EndSCHEMATC
