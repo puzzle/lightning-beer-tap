@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Arguments
-SHOP="https://ln-self-order-pos-dev.ose3.puzzle.ch/#/self-service-landscape/puzzleUp"
+SHOP="https://localhost/#/self-service-landscape/[pos-Identification]"
 KIOSK_ARGS="--kiosk --disable-translate --incognito --app=$SHOP"
 
 # Don't sleep, don't blank, waste energy!
