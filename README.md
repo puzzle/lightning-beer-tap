@@ -63,7 +63,7 @@ $ ./application.sh build # rebuilds the java websocket bridge
 
 # WebSocket Bridge
 
-(README)[./websocket_bridge/README.md]
+[README](./websocket_bridge/README.md)
 
 # GPIO handler
 
