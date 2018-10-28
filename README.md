@@ -2,6 +2,23 @@
 
 This project consists of multiple parts. To make things easier the `application.sh` provides a frontend to control everything. The different parts of the project are documented below.
 
+## Architecture
+
+The following diagram provides a general overview on how all the components work together
+
+![Architecture](./graphics/architecture.png)
+
+
+1. Basic Setup is done by running the `application.sh` shell script. (start Chromium in Kiosk mode, displays the self order pos webapplication in the Browser, starts the WebSocket Bridge
+1. User scans and pays invoice
+1. self-order pos gets notified that payment was successful
+1. self-order pos application sends a stomp event to the websocket
+1. WebSocket bridge runs the GPIO Handler with parameters about the product eg. small|large beer
+1. GPIO Handler switches the relay for a certain amount of time (small beer 5 seconds, large beer 7 seconds)
+
+The ln-self-order pos Application as well as lnd and bitcoind are not part of this project. Details about those can be found under https://github.com/puzzle/ln-self-order-pos
+
+
 ## Parts list
 
 To build your own lightning powered beer tap you'll need the follwing parts. We got most of our parts from distibutors located in switzerland, but you can get them anywhere you want.
@@ -46,34 +63,7 @@ $ ./application.sh build # rebuilds the java websocket bridge
 
 # WebSocket Bridge
 
-## build application
-```bash
-./gradlew build
-```
-
-## how to run
-
-get the built application from ./build/libs
-
-```bash
-java -jar websocket-bridge-0.0.1-SNAPSHOT.jar --url=wss://ln-self-order-pos-dev.ose3.puzzle.ch/websocket/invoice?access_token= --topic=/topic/invoice --command=./dummy_command.sh
-```
-
-Options:
-
-* url: the websocket to connect to
-* topic: the topic to subscribe to
-* command: the shell command that is executed when a message was received on the websocket
-
-Two Options will be routed to the shell command that is executed
-
-* --memo
-* --products
-
-for example:
-```
-./dummy_command.sh --memo="puzzleUp #9c4a Grey Card (CHF 5.00)" --products=PRODUCT_1
-```
+(README)[./websocket_bridge/README.md]
 
 # GPIO handler
 

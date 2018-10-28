@@ -1,6 +1,6 @@
 # WebSocket Bridge
 
-The WebSocket Bridge connects to the invoces WebSocket provided by a running instance of the https://github.com/puzzle/ln-self-order-pos
+The WebSocket Bridge connects to the invoices WebSocket provided by a running instance of the https://github.com/puzzle/ln-self-order-pos
 
 ## build java application
 ```bash
