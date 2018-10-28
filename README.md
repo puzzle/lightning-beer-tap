@@ -18,6 +18,16 @@ The following diagram provides a general overview on how all the components work
 
 The ln-self-order pos Application as well as lnd and bitcoind are not part of this project. Details about those can be found under https://github.com/puzzle/ln-self-order-pos
 
+## Impressions
+
+the final Lightning powered beer tap looks like this:
+
+![Architecture](./graphics/lightning-beer-tap1.png)
+
+![Architecture](./graphics/lightning-beer-tap2.png)
+
+![Architecture](./graphics/lightning-beer-tap3.jpg)
+
 
 ## Parts list
 
