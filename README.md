@@ -28,6 +28,10 @@ the final Lightning powered beer tap looks like this:
 
 ![Architecture](./graphics/lightning-beer-tap3.jpg)
 
+### Beer Tap in Action Video
+
+Check out this [video](https://twitter.com/puzzleitc/status/1054770838984122368) if you want to see the tap in action.
+
 
 ## Parts list
 
