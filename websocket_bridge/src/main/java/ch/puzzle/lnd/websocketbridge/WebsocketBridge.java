@@ -29,7 +29,7 @@ public class WebsocketBridge implements Runnable, DisposableBean {
 
 	private static final Logger logger = LoggerFactory.getLogger(WebsocketBridgeApplication.class);
 
-	private static String DEFAULT_URL = "wss://ln-self-order-pos-dev.ose3.puzzle.ch/websocket/invoice?access_token=";
+	private static String DEFAULT_URL = "ws://localhost/websocket/invoice?access_token=";
 	private static String DEFAULT_TOPIC = "/topic/invoice";
 	private static String DEFAULT_COMMAND = "./dummy_command.sh";
 
