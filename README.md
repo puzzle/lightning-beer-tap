@@ -48,12 +48,15 @@ sudo apt-get install -y  openjdk-8-jre openjdk-8-jdk unclutter vim
 ```
 * Add your user to the group `gpio`
 * You're all set and ready to go
+* Clone the repository on your Raspberry Pi
 
 # Aplication.sh start script
 
 This script is used to start, stop or rebuild the application. Simple as that.
 The websocket bridge will be automatically builded if you run `start` without a
 previous build.
+
+You might need to change the URL of your running ln-self-order-pos in the `application.sh` and dashboard `dashboard/dashboard.sh` files
 
 ```bash
 $ ./application.sh start # starts the dashboard and websocket bridge
