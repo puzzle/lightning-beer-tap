@@ -15,6 +15,7 @@ The following diagram provides a general overview on how all the components work
 1. self-order pos application sends a stomp event to the websocket
 1. WebSocket bridge runs the GPIO Handler with parameters about the product eg. small|large beer
 1. GPIO Handler switches the relay for a certain amount of time (small beer 5 seconds, large beer 7 seconds)
+**Important:** enjoy your beer, lightning pioneer!
 
 The ln-self-order pos Application as well as lnd and bitcoind are not part of this project. Details about those can be found under https://github.com/puzzle/ln-self-order-pos
 
