@@ -1,5 +1,6 @@
 /websocket_bridge/.gradle
 /websocket_bridge/build/
+/websocket_bridge/bin/
 !gradle/wrapper/gradle-wrapper.jar
 nohup.out
 websocket-bridge-0.0.1-SNAPSHOT.jar
