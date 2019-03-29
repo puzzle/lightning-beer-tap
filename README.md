@@ -1,6 +1,7 @@
 # Lightning powered beer tap
 
-This project consists of multiple parts. To make things easier the `application.sh` provides a frontend to control everything. The different parts of the project are documented below.
+This project consists of multiple parts. To make things easier the `application.sh` provides a frontend
+to control everything. The different parts of the project are documented below.
 
 ## Architecture
 
@@ -9,15 +10,17 @@ The following diagram provides a general overview on how all the components work
 ![Architecture](./graphics/architecture.png)
 
 
-1. Basic Setup is done by running the `application.sh` shell script. (start Chromium in Kiosk mode, displays the self order pos webapplication in the Browser, starts the WebSocket Bridge
+1. Basic Setup is done by running the `application.sh` shell script. (start Chromium in Kiosk mode, displays
+   the Zeus self-service web application in the browser, starts the WebSocket Bridge
 1. User scans and pays invoice
-1. self-order pos gets notified that payment was successful
-1. self-order pos application sends a stomp event to the websocket
+1. Zeus gets notified that payment was successful
+1. Zeus sends a stomp event to the websocket
 1. WebSocket bridge runs the GPIO Handler with parameters about the product eg. small|large beer
 1. GPIO Handler switches the relay for a certain amount of time (small beer 5 seconds, large beer 7 seconds)
 **Important:** enjoy your beer, lightning pioneer!
 
-The ln-self-order pos Application as well as lnd and bitcoind are not part of this project. Details about those can be found under https://github.com/puzzle/ln-self-order-pos
+The Zeus Application as well as lnd and bitcoind are not part of this project.
+Details about those can be found under [https://github.com/puzzle/zeus](https://github.com/puzzle/zeus)
 
 ## Impressions
 
@@ -36,9 +39,10 @@ Check out this [video](https://twitter.com/puzzleitc/status/1054770838984122368)
 
 ## Parts list
 
-To build your own lightning powered beer tap you'll need the follwing parts. We got most of our parts from distibutors located in switzerland, but you can get them anywhere you want.
+To build your own lightning powered beer tap you'll need the follwing parts. We got most of our parts from distributors
+located in switzerland, but you can get them anywhere you want.
 
-| **Partname**                    | **Partnumber** | **Price / CHF**   |  **Distributor**          |
+| **Part name**                    | **Part number** | **Price / CHF**   |  **Distributor**          |
 | :------------------------------ | --------------:| ----------------: | :------------------------ |
 | Raspberry Pi 3 B+               |  10760         |  39               |  pi-shop.ch               |
 | 32GB MicroSD Card               |  6613018       |  29.9             |  digitec.ch               |
@@ -51,11 +55,13 @@ To build your own lightning powered beer tap you'll need the follwing parts. We 
 
 ## Installation
 
-This is straightforward. If you bought an empty micro-sd card, just download the latest [Raspbian image](https://www.raspberrypi.org/downloads/raspbian/).
+This is straightforward. If you bought an empty micro-sd card, just download the latest
+[Raspbian image](https://www.raspberrypi.org/downloads/raspbian/).
 * Fire up `dd` to load the image to your card.
 * Use `sudo raspi-config` to extend your partitions, start openssh and enable the gpios.
-* Follow the guide on [how to secure you raspberry pi](https://www.raspberrypi.org/documentation/configuration/security.md)
-* Once you've deployed your ssh key and secured your acces, clone this repo.
+* Follow the guide on
+  [how to secure you raspberry pi](https://www.raspberrypi.org/documentation/configuration/security.md)
+* Once you've deployed your ssh key and secured your access, clone this repo.
 * Install the necessary software to your pi by executing the following commands:
 ```bash
 sudo apt-get update
@@ -65,13 +71,14 @@ sudo apt-get install -y  openjdk-8-jre openjdk-8-jdk unclutter vim
 * You're all set and ready to go
 * Clone the repository on your Raspberry Pi
 
-# Aplication.sh start script
+# application.sh start script
 
 This script is used to start, stop or rebuild the application. Simple as that.
-The websocket bridge will be automatically builded if you run `start` without a
+The websocket bridge will be automatically built if you run `start` without a
 previous build.
 
-You might need to change the URL of your running ln-self-order-pos in the `application.sh` and dashboard `dashboard/dashboard.sh` files
+You might need to change the URL of your running ln-self-order-pos in the `application.sh` and dashboard
+`dashboard/dashboard.sh` files
 
 ```bash
 $ ./application.sh start # starts the dashboard and websocket bridge
@@ -89,7 +96,7 @@ To execute this python module the user has to be part of the group `gpio`.
 
 ## Dependencies
 
-* RPi-GPIO (preinstalled on all raspberry pi distros)
+* RPi-GPIO (pre-installed on all raspberry pi distributions)
 * argparse
 
 ## how to run
