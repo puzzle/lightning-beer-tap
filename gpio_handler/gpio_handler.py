@@ -128,10 +128,10 @@ if __name__ == "__main__":
     elif args.flush:
         print("Choice: Flush tap")
         draw_beer(t_flush)
-    elif args.products == "LARGE_BEER":
+    elif args.products == "LARGE":
         print("Choice: Large beer")
         draw_beer(t_large_beer)
-    elif args.products == "SMALL_BEER":
+    elif args.products == "SMALL":
         print("Choice: Small beer")
         draw_beer(t_small_beer)
     else:
