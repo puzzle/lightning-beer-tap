@@ -61,12 +61,17 @@ public class MyStompSessionHandler extends StompSessionHandlerAdapter {
 		String memoArg = "--memo=\"" + invoice.getMemo() + "\"";
 		String productsArg = "--products=" + invoice.getOrderedProducts();
 		
+		if(invoice != null && !invoice.getMemo().startsWith("beerTap")) {
+			logger.info("Not a beerTap invoice");
+			return;
+		}
+		
 		logger.info("Command: " + command + ", Args: " + memoArg + ", " + productsArg);
 
 		ProcessBuilder pb = new ProcessBuilder(command, memoArg, productsArg);
 		
 		Map<String, String> env = pb.environment();
-		env.put("PUZZLE_POS", "beerPos");
+		env.put("PUZZLE_POS", "beerTap");
 		pb.directory(new File("./"));
 		Process p = pb.start();
 		p.waitFor();

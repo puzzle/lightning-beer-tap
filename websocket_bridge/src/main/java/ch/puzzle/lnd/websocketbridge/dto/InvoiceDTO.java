@@ -1,7 +1,6 @@
 package ch.puzzle.lnd.websocketbridge.dto;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -170,7 +169,7 @@ public class InvoiceDTO implements Serializable {
     			sb.append(",");
     			first = false;
     		}
-			sb.append(orderItemDTO.getItemType());
+			sb.append(orderItemDTO.getProductKey());
 		}
     	return sb.toString();
     }
