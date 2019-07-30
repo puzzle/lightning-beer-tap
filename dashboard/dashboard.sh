@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
+DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
+source $DIR/../configuration.sh
+
 # Arguments
-SHOP="https://localhost/#/self-service-landscape/[pos-Identification]"
-KIOSK_ARGS="--kiosk --disable-translate --incognito --app=$SHOP"
+KIOSK_ARGS="--kiosk --disable-translate --incognito --app=${FRONTEND_URL}"
 
 # Don't sleep, don't blank, waste energy!
 DISPLAY=:0 xset s off

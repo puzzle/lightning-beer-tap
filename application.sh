@@ -1,12 +1,7 @@
 #!/usr/bin/env bash
 
-# Java call parameters
-WEBAPP="wss://localhost/websocket/invoice?access_token="
-OPTS="-Xms128M -Xmx128M -jar"
-JARFILE="websocket-bridge-0.0.1-SNAPSHOT.jar"
-JARPATH="websocket_bridge/build/libs/"
-TOPIC="/topic/invoice"
-COMMAND="./gpio_handler/gpio_handler.py"
+DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
+source $DIR/configuration.sh
 
 usage(){
 cat << EOF                                                                              
@@ -27,16 +22,17 @@ EOF
 
 # Start all services on the beer tap device
 app_start(){
+	JAR=${BRIDGE_JARPATH}${BRIDGE_JARFILE}
 	# Check if the websocket bridge has been built
-	if [ ! -f $JARPATH$JARFILE ]; then
+	if [ ! -f ${JAR} ]; then
 		app_build
 	fi
 	# Start up the dashboard
-	source dashboard/dashboard.sh
+	source $DIR/dashboard/dashboard.sh
 	# Hide mouse when still
 	#DISPLAY=:0 unclutter -idle 0.01 -root &
 	# Start websocket bridge, fork to background and no output
-	nohup java $OPTS $JARPATH$JARFILE --url=$WEBAPP --topic=$TOPIC --command=$COMMAND & >/dev/null 2>&1
+	nohup java ${BRIDGE_JAVA_OPTS} ${JAR} --url=${WEBSOCKET_URL} --topic=${WEBSOCKET_TOPIC} --command=${GPIO_HANDLER_COMMAND} & >/dev/null 2>&1
 }
 
 # Stop all services
@@ -50,9 +46,8 @@ app_stop(){
 # Build or rebuild the java lighning node web bridge
 app_build(){
 	echo "Building the websocket bridge please wait"
-	cd websocket_bridge && exec ./gradlew build >/dev/null 2>&1
+	cd ${DIR}/websocket_bridge && exec ./gradlew build >/dev/null 2>&1
 }
-
 
 # Argument parsing
 case $1 in
