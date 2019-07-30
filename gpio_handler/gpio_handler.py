@@ -154,7 +154,7 @@ if __name__ == "__main__":
         draw_beer(r_ch1, t_small_beer)
     elif args.products == "LEFT_TAP":
         print("Choice: left tap")
-        draw_beer(r_ch2,t_left_tap)
+        draw_beer(r_ch1,t_left_tap)
     elif args.products == "RIGHT_TAP":
         print("Choice: right tap")
         draw_beer(r_ch2,t_right_tap)
