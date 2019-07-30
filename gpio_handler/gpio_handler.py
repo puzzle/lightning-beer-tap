@@ -17,9 +17,17 @@ r_ch2 = 20
 r_ch3 = 21
 
 # time constants in seconds
+# single tap
 t_large_beer = 6
 t_small_beer = 2
+# double tap
+t_left_tap = 6
+t_right_tap = 6
+
 t_flush = 20
+
+
+
 
 # Syntax suger because of negative logic
 S_ON = GPIO.LOW
@@ -52,6 +60,13 @@ def cli_args_parser():
     parser.add_argument(
             '-f',
             '--flush',
+            action='store_true',
+            help="Flush tap for 20s!"
+    )
+
+    parser.add_argument(
+            '-f2',
+            '--flush2',
             action='store_true',
             help="Flush tap for 20s!"
     )
@@ -101,13 +116,13 @@ def gpio_test():
         print("Channel_{}: gpio_{} off".format(i, gpio))
         time.sleep(0.1)
 
-def draw_beer(wait=t_large_beer):
+def draw_beer(channel=r_ch1, wait=t_large_beer):
     """ 
         Draw a delicious beer, keep the tap on for n_wait seconds 
     """
-    __set_gpio(r_ch1, S_ON)
+    __set_gpio(channel, S_ON)
     time.sleep(wait)
-    __set_gpio(r_ch1, S_OFF)
+    __set_gpio(channel, S_OFF)
 
 if __name__ == "__main__":
     """
@@ -127,12 +142,21 @@ if __name__ == "__main__":
         gpio_test()
     elif args.flush:
         print("Choice: Flush tap")
-        draw_beer(t_flush)
+        draw_beer(r_ch1, t_flush)
+    elif args.flush2:
+        print("Choice: Flush tap2")
+        draw_beer(r_ch2, t_flush)
     elif args.products == "LARGE":
         print("Choice: Large beer")
-        draw_beer(t_large_beer)
+        draw_beer(r_ch1, t_large_beer)
     elif args.products == "SMALL":
         print("Choice: Small beer")
-        draw_beer(t_small_beer)
+        draw_beer(r_ch1, t_small_beer)
+    elif args.products == "LEFT_TAP":
+        print("Choice: left tap")
+        draw_beer(r_ch1,t_left_tap)
+    elif args.products == "RIGHT_TAP":
+        print("Choice: right tap")
+        draw_beer(r_ch2,t_right_tap)
     else:
         print("RTFM!")
