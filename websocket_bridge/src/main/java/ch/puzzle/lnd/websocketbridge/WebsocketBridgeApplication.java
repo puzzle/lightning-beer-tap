@@ -15,5 +15,4 @@ public class WebsocketBridgeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(WebsocketBridgeApplication.class, args);
 	}
-
 }

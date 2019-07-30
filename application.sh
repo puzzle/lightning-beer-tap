@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
-source $DIR/configuration.sh
+source ${DIR}/configuration.sh
 
 usage(){
 cat << EOF                                                                              
@@ -28,11 +28,11 @@ app_start(){
 		app_build
 	fi
 	# Start up the dashboard
-	source $DIR/dashboard/dashboard.sh
+	source ${DIR}/dashboard/dashboard.sh
 	# Hide mouse when still
 	#DISPLAY=:0 unclutter -idle 0.01 -root &
 	# Start websocket bridge, fork to background and no output
-	nohup java ${BRIDGE_JAVA_OPTS} ${JAR} --url=${WEBSOCKET_URL} --topic=${WEBSOCKET_TOPIC} --command=${GPIO_HANDLER_COMMAND} & >/dev/null 2>&1
+	nohup java ${BRIDGE_JAVA_OPTS} ${JAR} --url=${WEBSOCKET_URL} --topic=${WEBSOCKET_TOPIC} --command=${GPIO_HANDLER_COMMAND} --prefix=${MEMO_PREFIX} & >/dev/null 2>&1
 }
 
 # Stop all services
