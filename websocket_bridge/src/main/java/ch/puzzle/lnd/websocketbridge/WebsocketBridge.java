@@ -32,14 +32,17 @@ public class WebsocketBridge implements Runnable, DisposableBean {
 	private static String DEFAULT_URL = "ws://localhost/websocket/invoice?access_token=";
 	private static String DEFAULT_TOPIC = "/topic/invoice";
 	private static String DEFAULT_COMMAND = "./dummy_command.sh";
+	private static String DEFAULT_MEMO_PREFIX = "beerTap";
 
 	private static String OPTION_ARG_URL = "url";
 	private static String OPTION_ARG_TOPIC = "topic";
 	private static String OPTION_ARG_COMMAND = "command";
+	private static String OPTION_ARG_MEMO_PREFIX = "prefix";
 
 	private String url = DEFAULT_URL;
 	private String topic = DEFAULT_TOPIC;
 	private String command = DEFAULT_COMMAND;
+	private String memoPrefix = DEFAULT_MEMO_PREFIX;
 
 	private Thread thread;
 
@@ -74,6 +77,10 @@ public class WebsocketBridge implements Runnable, DisposableBean {
 		if (args.getOptionValues(OPTION_ARG_COMMAND) != null && !args.getOptionValues(OPTION_ARG_COMMAND).equals("")) {
 			command = args.getOptionValues(OPTION_ARG_COMMAND).get(0);
 		}
+
+		if (args.getOptionValues(OPTION_ARG_MEMO_PREFIX) != null && !args.getOptionValues(OPTION_ARG_MEMO_PREFIX).equals("")) {
+			memoPrefix = args.getOptionValues(OPTION_ARG_MEMO_PREFIX).get(0);
+		}
 	}
 	
 	private ListenableFuture<StompSession> connect() throws InterruptedException{
@@ -82,7 +89,7 @@ public class WebsocketBridge implements Runnable, DisposableBean {
 		WebSocketClient transport = new SockJsClient(transports);
 		WebSocketStompClient stompClient = new WebSocketStompClient(transport);
 		stompClient.setMessageConverter(new MappingJackson2MessageConverter());
-		StompSessionHandler sessionHandler = new MyStompSessionHandler(topic, command);
+		StompSessionHandler sessionHandler = new MyStompSessionHandler(topic, command, memoPrefix);
 		
 		ListenableFuture<StompSession> session = null;
 		
@@ -100,11 +107,8 @@ public class WebsocketBridge implements Runnable, DisposableBean {
 			}
 		}
 		
-		
 		return session;
 	}
-	
-	
 
 	@Override
 	public void run() {
