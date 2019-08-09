@@ -20,13 +20,12 @@ r_ch3 = 21
 # single tap
 t_large_beer = 6
 t_small_beer = 2
+
 # double tap
 t_left_tap = 6
 t_right_tap = 6
 
 t_flush = 20
-
-
 
 
 # Syntax suger because of negative logic
@@ -58,25 +57,24 @@ def cli_args_parser():
     )
 
     parser.add_argument(
-            '-f',
-            '--flush',
+            '-f1',
+            '--flush1',
             action='store_true',
-            help="Flush tap for 20s!"
+            help="Flush tap 1 for 20s!"
     )
 
     parser.add_argument(
             '-f2',
             '--flush2',
             action='store_true',
-            help="Flush tap for 20s!"
+            help="Flush tap 2 for 20s!"
     )
 
     parser.add_argument(
-            '-m',
-            '--memo',
-            action='store',
-            dest='memo',
-            help="Precise product information"
+            '-f3',
+            '--flush3',
+            action='store_true',
+            help="Flush tap 3 for 20s!"
     )
 
     return parser.parse_args()
@@ -140,12 +138,15 @@ if __name__ == "__main__":
     if args.test:
         print("Test mode enabled")
         gpio_test()
-    elif args.flush:
-        print("Choice: Flush tap")
+    elif args.flush1:
+        print("Choice: Flush tap1")
         draw_beer(r_ch1, t_flush)
     elif args.flush2:
         print("Choice: Flush tap2")
         draw_beer(r_ch2, t_flush)
+    elif args.flush3:
+        print("Choice: Flush tap3")
+        draw_beer(r_ch3, t_flush)
     elif args.products == "LARGE":
         print("Choice: Large beer")
         draw_beer(r_ch1, t_large_beer)
@@ -154,9 +155,9 @@ if __name__ == "__main__":
         draw_beer(r_ch1, t_small_beer)
     elif args.products == "LEFT_TAP":
         print("Choice: left tap")
-        draw_beer(r_ch1,t_left_tap)
+        draw_beer(r_ch1, t_left_tap)
     elif args.products == "RIGHT_TAP":
         print("Choice: right tap")
-        draw_beer(r_ch2,t_right_tap)
+        draw_beer(r_ch2, t_right_tap)
     else:
         print("RTFM!")
