@@ -59,18 +59,16 @@ public class MyStompSessionHandler extends StompSessionHandlerAdapter {
 	}
 
 	private void executeCommand(InvoiceDTO invoice) throws IOException, InterruptedException {
-		
-		String memoArg = "--memo=\"" + invoice.getMemo() + "\"";
 		String productsArg = "--products=" + invoice.getOrderedProducts();
 		
-		if(invoice != null && !invoice.getMemo().startsWith(memoPrefix)) {
+		if(!invoice.getMemo().startsWith(memoPrefix)) {
 			logger.info("Not a beerTap invoice");
 			return;
 		}
 		
-		logger.info("Command: " + command + ", Args: " + memoArg + ", " + productsArg);
+		logger.info("Command: " + command + ", Args: " + productsArg);
 
-		ProcessBuilder pb = new ProcessBuilder(command, memoArg, productsArg);
+		ProcessBuilder pb = new ProcessBuilder(command, productsArg);
 		Map<String, String> env = pb.environment();
 		pb.directory(new File("./"));
 		Process p = pb.start();
