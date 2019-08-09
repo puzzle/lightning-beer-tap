@@ -39,7 +39,7 @@ app_start(){
 app_stop(){
 	echo "Killing all services..."
 	killall java
-	killall chromium-browser
+	pkill -f -- "--type=renderer"
 	killall unclutter
 }
 
