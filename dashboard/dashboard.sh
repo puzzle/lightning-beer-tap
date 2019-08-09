@@ -4,7 +4,7 @@ DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
 source $DIR/../configuration.sh
 
 # Arguments
-KIOSK_ARGS="--kiosk --disable-translate --incognito --app=${FRONTEND_URL}"
+KIOSK_ARGS="--kiosk --disable-translate --incognito --app=${FRONTEND_URL} --force-device-scale-factor=${CHROME_ZOOM}"
 
 # Don't sleep, don't blank, waste energy!
 DISPLAY=:0 xset s off

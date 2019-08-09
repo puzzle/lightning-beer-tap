@@ -18,6 +18,7 @@ MEMO_PREFIX="beerTap"
 # ----------------------------------------------
 # most likely you don't need to change anything here
 # ----------------------------------------------
+CHROME_ZOOM="1.0"
 BRIDGE_JAVA_OPTS="-Xms128M -Xmx128M -jar"
 BRIDGE_JARFILE="websocket-bridge-0.0.1-SNAPSHOT.jar"
 BRIDGE_JARPATH="websocket_bridge/build/libs/"
