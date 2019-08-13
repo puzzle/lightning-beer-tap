@@ -50,12 +50,14 @@ public class MyStompSessionHandler extends StompSessionHandlerAdapter {
 	@Override
 	public void handleFrame(StompHeaders headers, Object payload) {
 		logger.info("Received : " + payload.toString());
-		InvoiceDTO invoice = (InvoiceDTO) payload;
-		try {
-			executeCommand(invoice);
-		} catch (IOException | InterruptedException e) {
-			e.printStackTrace();
-		}
+		final InvoiceDTO invoice = (InvoiceDTO) payload;
+		new Thread(() -> {
+			try {
+				executeCommand(invoice);
+			} catch (IOException | InterruptedException e) {
+				e.printStackTrace();
+			}
+		}).start();
 	}
 
 	private void executeCommand(InvoiceDTO invoice) throws IOException, InterruptedException {
