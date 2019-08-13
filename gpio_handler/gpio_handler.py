@@ -79,17 +79,16 @@ def cli_args_parser():
 
     return parser.parse_args()
 
-def __setup_GPIO():
+def __setup_GPIO(channel=r_ch1):
     """ 
         Setup all GPIOs, set output mode, and set gpio mode to bcm
     """
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)
 
-    for gpio in [r_ch1, r_ch2, r_ch3]:
-        print("setting up gpio_{}".format(gpio))
-        GPIO.setup(gpio, GPIO.OUT)
-        __set_gpio(gpio, S_OFF)
+    print("setting up gpio_{}".format(channel))
+    GPIO.setup(channel, GPIO.OUT)
+    __set_gpio(channel, S_OFF)
 
 def __set_gpio(channel=r_ch1, value=S_OFF):
     """ 
@@ -107,6 +106,9 @@ def gpio_test():
         Test all channels
     """
     for i, gpio in enumerate([r_ch1, r_ch2, r_ch3], start=1):
+        # Setup gpio pin
+        __setup_GPIO(gpio)
+
         __set_gpio(gpio, S_ON)
         print("Channel_{}: gpio_{} on".format(i, gpio))
         time.sleep(0.1)
@@ -118,6 +120,9 @@ def draw_beer(channel=r_ch1, wait=t_large_beer):
     """ 
         Draw a delicious beer, keep the tap on for n_wait seconds 
     """
+    # Setup gpio pin
+    __setup_GPIO(channel)
+
     __set_gpio(channel, S_ON)
     time.sleep(wait)
     __set_gpio(channel, S_OFF)
@@ -130,9 +135,6 @@ if __name__ == "__main__":
     args = cli_args_parser()
 
     print(args.products)
-    
-    # Setup all gpio pins
-    __setup_GPIO()
 
     # call functions according to the given arguments
     if args.test:
