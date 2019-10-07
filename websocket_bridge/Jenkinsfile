@@ -1,5 +1,9 @@
 pipeline {
-    agent { label 'buildnode' }
+    agent { label 'buildnode-cloud' }
+    environment {
+        JAVA_HOME = tool("jdk8_openjdk")
+        PATH = "${JAVA_HOME}/bin:${PATH}"
+    }
     options {
         buildDiscarder(logRotator(numToKeepStr: '5'))
         timeout(time: 30, unit: 'MINUTES')
