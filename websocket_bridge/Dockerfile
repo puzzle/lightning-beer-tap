@@ -18,8 +18,8 @@ USER jboss
 RUN mkdir -p /tmp/src/
 COPY src /tmp/src/src
 COPY gradle /tmp/src/gradle
-COPY build.gradle gradlew settings.gradle /tmp/src/
+COPY build.gradle gradlew settings.gradle webhook.sh /tmp/src/
 
 RUN cd /tmp/src && sh gradlew build
 
-RUN cp -a /tmp/src/build/libs/*.jar /deployments/websocket-bridge.jar
+RUN cp -a /tmp/src/build/libs/*.jar /deployments/websocket-bridge.jar && cp -a /tmp/src/webhook.sh /deployments/webhook.sh
