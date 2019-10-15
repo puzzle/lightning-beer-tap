@@ -38,6 +38,11 @@ public class WebsocketBridge implements Runnable, DisposableBean {
 	private static String OPTION_ARG_TOPIC = "topic";
 	private static String OPTION_ARG_COMMAND = "command";
 	private static String OPTION_ARG_MEMO_PREFIX = "prefix";
+	
+	private static String ENV_URL = "WSB_URL";
+	private static String ENV_TOPIC = "WSB_TOPIC";
+	private static String ENV_COMMAND = "WSB_COMMAND";
+	private static String ENV_MEMO_PREFIX = "WSB_PREFIX";
 
 	private String url = DEFAULT_URL;
 	private String topic = DEFAULT_TOPIC;
@@ -68,22 +73,31 @@ public class WebsocketBridge implements Runnable, DisposableBean {
 
 		if (args.getOptionValues(OPTION_ARG_URL) != null && !args.getOptionValues(OPTION_ARG_URL).equals("")) {
 			url = args.getOptionValues(OPTION_ARG_URL).get(0);
+		}else if (System.getenv(ENV_URL) !=null && !System.getenv(ENV_URL).equals("")) {
+			url = System.getenv(ENV_URL);
 		}
 
 		if (args.getOptionValues(OPTION_ARG_TOPIC) != null && !args.getOptionValues(OPTION_ARG_TOPIC).equals("")) {
 			topic = args.getOptionValues(OPTION_ARG_TOPIC).get(0);
+		}else if (System.getenv(ENV_TOPIC) !=null && !System.getenv(ENV_TOPIC).equals("")) {
+			topic = System.getenv(ENV_TOPIC);
 		}
 
 		if (args.getOptionValues(OPTION_ARG_COMMAND) != null && !args.getOptionValues(OPTION_ARG_COMMAND).equals("")) {
 			command = args.getOptionValues(OPTION_ARG_COMMAND).get(0);
+		}else if (System.getenv(ENV_COMMAND) !=null && !System.getenv(ENV_COMMAND).equals("")) {
+			command = System.getenv(ENV_COMMAND);
 		}
 
 		if (args.getOptionValues(OPTION_ARG_MEMO_PREFIX) != null && !args.getOptionValues(OPTION_ARG_MEMO_PREFIX).equals("")) {
 			memoPrefix = args.getOptionValues(OPTION_ARG_MEMO_PREFIX).get(0);
+		}else if (System.getenv(ENV_MEMO_PREFIX) !=null && !System.getenv(ENV_MEMO_PREFIX).equals("")) {
+			memoPrefix = System.getenv(ENV_MEMO_PREFIX);
 		}
 	}
 	
 	private ListenableFuture<StompSession> connect() throws InterruptedException{
+		logger.info("Connecting with options: url: "+ url + " topic: " + topic + " command: " + command +" memo: "+ memoPrefix);
 		List<Transport> transports = new ArrayList<>(1);
 		transports.add(new WebSocketTransport(new StandardWebSocketClient()));
 		WebSocketClient transport = new SockJsClient(transports);
