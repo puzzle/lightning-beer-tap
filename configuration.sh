@@ -13,7 +13,7 @@ WEBSOCKET_URL="wss://localhost/websocket/invoice?access_token="
 FRONTEND_URL="https://localhost/#/self-service-landscape/[pos-Identification]"
 
 # only listen to paid invoices that have the following text at the beginning of their memo
-MEMO_PREFIX="beerTap"
+MEMO_PREFIX="beerTapDouble"
 
 # ----------------------------------------------
 # most likely you don't need to change anything here
